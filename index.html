@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pwani Beach Resort & Restaurant — Luxury beachfront accommodation and authentic Swahili cuisine on the shores of Mombasa, Kenya. Book directly and save.">
+  <meta name="keywords" content="Mombasa hotel, beach resort Kenya, Swahili restaurant, Mombasa accommodation, Diani beach, direct booking">
+  <title>Pwani Beach Resort & Restaurant — Mombasa, Kenya</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Resort",
+    "name": "Pwani Beach Resort & Restaurant",
+    "description": "Luxury beachfront resort with authentic Swahili cuisine on the Indian Ocean shore in Mombasa, Kenya.",
+    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nyali Beach Road",
+      "addressLocality": "Mombasa",
+      "addressCountry": "KE"
+    },
+    "telephone": "+254-700-123456",
+    "priceRange": "KES 5,000 - KES 25,000",
+    "starRating": { "@type": "Rating", "ratingValue": "4.8" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">🌊</div>
+        <span data-en="Pwani Resort" data-sw="Pwani Resort">Pwani Resort</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#services" data-en="Services" data-sw="Huduma">Services</a>
+        <a href="#gallery" data-en="Gallery" data-sw="Picha">Gallery</a>
+        <a href="#booking" data-en="Book Now" data-sw="Weka Nafasi">Book Now</a>
+        <a href="#pricing" data-en="Pricing" data-sw="Bei">Pricing</a>
+        <a href="#reviews" data-en="Reviews" data-sw="Maoni">Reviews</a>
+        <a href="#location" data-en="Location" data-sw="Mahali">Location</a>
+      </div>
+
+      <div class="nav-controls">
+        <button class="nav-toggle-btn lang-toggle" id="langToggle" title="Switch Language" data-en="SW" data-sw="EN">SW</button>
+        <button class="nav-toggle-btn" id="themeToggle" title="Toggle Dark/Light Mode">
+          <i data-lucide="moon" class="theme-icon-dark" style="width:18px;height:18px"></i>
+          <i data-lucide="sun" class="theme-icon-light" style="width:18px;height:18px;display:none"></i>
+        </button>
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=80" 
+           alt="Pwani Beach Resort aerial view of the Indian Ocean" loading="eager">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span data-en="📍 Nyali Beach, Mombasa" data-sw="📍 Pwani ya Nyali, Mombasa">📍 Nyali Beach, Mombasa</span>
+      </div>
+
+      <h1>
+        <span data-en="Where the Indian Ocean Meets " data-sw="Bahari ya Hindi Inakutana na ">Where the Indian Ocean Meets </span>
+        <span class="ocean-text" data-en="Swahili Hospitality" data-sw="Ukarimu wa Kiswahili">Swahili Hospitality</span>
+      </h1>
+
+      <p class="hero-description" data-en="Experience luxury beachfront living with authentic coastal cuisine. Book directly and save up to 30% compared to travel agencies." data-sw="Pata uzoefu wa maisha ya kifahari kando ya bahari na vyakula halisi vya pwani. Weka nafasi moja kwa moja na okoa hadi 30%.">
+        Experience luxury beachfront living with authentic coastal cuisine. Book directly and save up to 30% compared to travel agencies.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#booking" class="btn btn-primary">
+          <i data-lucide="calendar" style="width:18px;height:18px"></i>
+          <span data-en="Book Now — Save 30%" data-sw="Weka Nafasi — Okoa 30%">Book Now — Save 30%</span>
+        </a>
+        <a href="https://wa.me/254700123456?text=Hello%20Pwani%20Resort!" target="_blank" class="btn btn-whatsapp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-en="WhatsApp Us" data-sw="Tuandikie WhatsApp">WhatsApp Us</span>
+        </a>
+        <a href="#gallery" class="btn btn-outline">
+          <i data-lucide="play-circle" style="width:18px;height:18px"></i>
+          <span data-en="Take a Tour" data-sw="Tembelea">Take a Tour</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value">4.8 ⭐</div>
+          <div class="hero-stat-label" data-en="500+ Google Reviews" data-sw="Maoni 500+ ya Google">500+ Google Reviews</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">12+</div>
+          <div class="hero-stat-label" data-en="Years of Excellence" data-sw="Miaka ya Ubora">Years of Excellence</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">30%</div>
+          <div class="hero-stat-label" data-en="Saved vs. OTAs" data-sw="Okolewayo vs. Mawakala">Saved vs. OTAs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-mouse"></div>
+      <span data-en="Scroll to explore" data-sw="Sogeza kuchunguza">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES SECTION ==================== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i data-lucide="sparkles" style="width:14px;height:14px"></i>
+          <span data-en="Our Services" data-sw="Huduma Zetu">Our Services</span>
+        </div>
+        <h2 class="section-title" data-en="Everything You Need for a <span class='highlight'>Perfect Stay</span>" data-sw="Kila Kitu Unachohitaji kwa <span class='highlight'>Kukaa Vizuri</span>">Everything You Need for a <span class="highlight">Perfect Stay</span></h2>
+        <p class="section-subtitle" data-en="From ocean-view suites to authentic Swahili dining, we've crafted every detail to make your Mombasa experience unforgettable." data-sw="Kutoka vyumba vya bahari hadi vyakula halisi vya Kiswahili, tumepanga kila undani kufanya uzoefu wako Mombasa usisahaulike.">From ocean-view suites to authentic Swahili dining, we've crafted every detail to make your Mombasa experience unforgettable.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">🏨</div>
+          <h3 data-en="Luxury Accommodation" data-sw="Malazi ya Kifahari">Luxury Accommodation</h3>
+          <p data-en="Ocean-view suites and garden rooms with premium amenities, AC, and private balconies overlooking the Indian Ocean." data-sw="Vyumba vya bahari na bustani vyenye vifaa bora, AC, na balcony binafsi inayoangalia Bahari ya Hindi.">Ocean-view suites and garden rooms with premium amenities, AC, and private balconies overlooking the Indian Ocean.</p>
+          <div class="service-price"><span class="from" data-en="From" data-sw="Kuanzia">From</span> KES 8,500<span class="from" data-en="/night" data-sw="/usiku">/night</span></div>
+        </div>
+
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">🍽️</div>
+          <h3 data-en="Swahili Restaurant" data-sw="Mkahawa wa Kiswahili">Swahili Restaurant</h3>
+          <p data-en="Authentic coastal cuisine — biriani, pilau, grilled seafood, and fresh tropical juices. Farm-to-table ingredients daily." data-sw="Vyakula halisi vya pwani — biriani, pilau, samaki wa kuchoma, na juisi safi za matunda. Viungo safi kila siku.">Authentic coastal cuisine — biriani, pilau, grilled seafood, and fresh tropical juices. Farm-to-table ingredients daily.</p>
+          <div class="service-price"><span class="from" data-en="From" data-sw="Kuanzia">From</span> KES 1,200<span class="from" data-en="/meal" data-sw="/mlo">/meal</span></div>
+        </div>
+
+        <div class="service-card reveal delay-3">
+          <div class="service-icon">🚤</div>
+          <h3 data-en="Ocean Activities" data-sw="Shughuli za Bahari">Ocean Activities</h3>
+          <p data-en="Snorkeling, deep-sea fishing, dhow cruises at sunset, and glass-bottom boat tours. Equipment and guides included." data-sw="Kupiga mbizi, kuvua baharini, safari za jahazi wakati wa machweo, na safari za mashua. Vifaa na waongozaji wamejumuishwa.">Snorkeling, deep-sea fishing, dhow cruises at sunset, and glass-bottom boat tours. Equipment and guides included.</p>
+          <div class="service-price"><span class="from" data-en="From" data-sw="Kuanzia">From</span> KES 3,500<span class="from" data-en="/person" data-sw="/mtu">/person</span></div>
+        </div>
+
+        <div class="service-card reveal delay-4">
+          <div class="service-icon">💆</div>
+          <h3 data-en="Spa & Wellness" data-sw="Spa na Ustawi">Spa & Wellness</h3>
+          <p data-en="Oceanfront massage, aromatherapy, and traditional Swahili beauty treatments. Relax with the sound of waves." data-sw="Masaji kando ya bahari, aromatherapy, na matibabu ya uzuri wa Kiswahili. Pumzika na sauti za mawimbi.">Oceanfront massage, aromatherapy, and traditional Swahili beauty treatments. Relax with the sound of waves.</p>
+          <div class="service-price"><span class="from" data-en="From" data-sw="Kuanzia">From</span> KES 4,000<span class="from" data-en="/session" data-sw="/kipindi">/session</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GALLERY SECTION ==================== -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i data-lucide="camera" style="width:14px;height:14px"></i>
+          <span data-en="Gallery" data-sw="Picha">Gallery</span>
+        </div>
+        <h2 class="section-title" data-en="See the <span class='highlight'>Pwani Experience</span>" data-sw="Tazama <span class='highlight'>Uzoefu wa Pwani</span>">See the <span class="highlight">Pwani Experience</span></h2>
+        <p class="section-subtitle" data-en="Real photos from our resort — no filters needed when paradise is your backyard." data-sw="Picha halisi kutoka resoti yetu — hakuna filters zinahitajika peponi ni ua lako.">Real photos from our resort — no filters needed when paradise is your backyard.</p>
+      </div>
+
+      <div class="gallery-grid reveal-scale">
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1540541338287-41700c6e5e48?w=800&q=80" alt="Infinity pool with ocean view" loading="lazy">
+          <div class="gallery-item-overlay"><span data-en="Infinity Pool" data-sw="Bwawa la Kuogelea">Infinity Pool</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Swahili cuisine seafood platter" loading="lazy">
+          <div class="gallery-item-overlay"><span data-en="Swahili Cuisine" data-sw="Vyakula vya Kiswahili">Swahili Cuisine</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80" alt="Luxury ocean view room" loading="lazy">
+          <div class="gallery-item-overlay"><span data-en="Ocean Suite" data-sw="Chumba cha Bahari">Ocean Suite</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Traditional dhow sunset cruise" loading="lazy">
+          <div class="gallery-item-overlay"><span data-en="Dhow Cruise" data-sw="Safari ya Jahazi">Dhow Cruise</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=80" alt="Spa treatment room" loading="lazy">
+          <div class="gallery-item-overlay"><span data-en="Spa & Wellness" data-sw="Spa na Ustawi">Spa & Wellness</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close"><i data-lucide="x" style="width:24px;height:24px"></i></button>
+    <img src="" alt="Gallery fullview" id="lightboxImg">
+  </div>
+
+  <!-- ==================== BOOKING SECTION ==================== -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i data-lucide="calendar-check" style="width:14px;height:14px"></i>
+          <span data-en="Book Directly" data-sw="Weka Nafasi Moja kwa Moja">Book Directly</span>
+        </div>
+        <h2 class="section-title" data-en="Reserve Your <span class='highlight'>Paradise</span>" data-sw="Hifadhi <span class='highlight'>Peponi</span> Yako">Reserve Your <span class="highlight">Paradise</span></h2>
+        <p class="section-subtitle" data-en="Book directly with us and save up to 30% — no middleman fees. Instant confirmation via WhatsApp." data-sw="Weka nafasi moja kwa moja na okoa hadi 30% — hakuna ada za wakala. Uthibitisho wa haraka kupitia WhatsApp.">Book directly with us and save up to 30% — no middleman fees. Instant confirmation via WhatsApp.</p>
+      </div>
+
+      <div class="booking-wrapper">
+        <!-- Calendar Widget -->
+        <div class="calendar-widget reveal-left">
+          <div class="calendar-header">
+            <button class="calendar-nav-btn" onclick="changeMonth(-1)"><i data-lucide="chevron-left" style="width:18px;height:18px"></i></button>
+            <h3 id="calendarMonth"></h3>
+            <button class="calendar-nav-btn" onclick="changeMonth(1)"><i data-lucide="chevron-right" style="width:18px;height:18px"></i></button>
+          </div>
+          <div class="calendar-days-header">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="calendar-days" id="calendarDays"></div>
+
+          <div class="time-slots">
+            <h4 data-en="🕐 Select Check-in Time" data-sw="🕐 Chagua Wakati wa Kuingia">🕐 Select Check-in Time</h4>
+            <div class="time-slots-grid">
+              <button class="time-slot" onclick="selectTime(this)">10:00 AM</button>
+              <button class="time-slot" onclick="selectTime(this)">11:00 AM</button>
+              <button class="time-slot selected" onclick="selectTime(this)">12:00 PM</button>
+              <button class="time-slot" onclick="selectTime(this)">1:00 PM</button>
+              <button class="time-slot" onclick="selectTime(this)">2:00 PM</button>
+              <button class="time-slot" onclick="selectTime(this)">3:00 PM</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-form reveal-right">
+          <form id="bookingForm" onsubmit="handleBooking(event)">
+            <div class="form-group">
+              <label data-en="Full Name" data-sw="Jina Kamili">Full Name</label>
+              <input type="text" id="bookingName" placeholder="e.g. John Kamau" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label data-en="Phone (M-Pesa)" data-sw="Simu (M-Pesa)">Phone (M-Pesa)</label>
+                <input type="tel" id="bookingPhone" placeholder="+254 7XX XXX XXX" required>
+              </div>
+              <div class="form-group">
+                <label data-en="Guests" data-sw="Wageni">Guests</label>
+                <select id="bookingGuests">
+                  <option>1 Guest</option>
+                  <option selected>2 Guests</option>
+                  <option>3 Guests</option>
+                  <option>4 Guests</option>
+                  <option>5+ Guests</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label data-en="Service" data-sw="Huduma">Service</label>
+              <select id="bookingService">
+                <option value="ocean-suite" data-en="Ocean Suite — KES 15,000/night" data-sw="Chumba cha Bahari — KES 15,000/usiku">Ocean Suite — KES 15,000/night</option>
+                <option value="garden-room" data-en="Garden Room — KES 8,500/night" data-sw="Chumba cha Bustani — KES 8,500/usiku">Garden Room — KES 8,500/night</option>
+                <option value="restaurant" data-en="Restaurant Reservation" data-sw="Hifadhi ya Mkahawa">Restaurant Reservation</option>
+                <option value="dhow-cruise" data-en="Dhow Sunset Cruise — KES 5,000/person" data-sw="Safari ya Jahazi — KES 5,000/mtu">Dhow Sunset Cruise — KES 5,000/person</option>
+                <option value="spa" data-en="Spa Package — KES 7,500" data-sw="Kifurushi cha Spa — KES 7,500">Spa Package — KES 7,500</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label data-en="Special Requests" data-sw="Maombi Maalum">Special Requests</label>
+              <textarea id="bookingNotes" rows="3" placeholder="Any dietary needs, celebrations, or preferences..." data-en-placeholder="Any dietary needs, celebrations, or preferences..." data-sw-placeholder="Mahitaji yoyote ya chakula, sherehe, au mapendeleo..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%">
+              <i data-lucide="check-circle" style="width:18px;height:18px"></i>
+              <span data-en="Confirm Booking" data-sw="Thibitisha Nafasi">Confirm Booking</span>
+            </button>
+
+            <div class="mpesa-badge" style="margin-top:16px;justify-content:center;width:100%;display:flex">
+              <span>💚</span>
+              <span data-en="Pay securely via M-Pesa" data-sw="Lipa kwa usalama kupitia M-Pesa">Pay securely via M-Pesa</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING SECTION ==================== -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i data-lucide="tag" style="width:14px;height:14px"></i>
+          <span data-en="Pricing" data-sw="Bei">Pricing</span>
+        </div>
+        <h2 class="section-title" data-en="Transparent <span class='highlight'>Direct Pricing</span>" data-sw="Bei za Moja kwa Moja <span class='highlight'>Wazi</span>">Transparent <span class="highlight">Direct Pricing</span></h2>
+        <p class="section-subtitle" data-en="No hidden fees. No agency markups. Book directly and pay via M-Pesa." data-sw="Hakuna ada zilizofichwa. Hakuna bei ya juu ya mawakala. Weka nafasi na ulipe kupitia M-Pesa.">No hidden fees. No agency markups. Book directly and pay via M-Pesa.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card reveal delay-1">
+          <h3 data-en="Garden Room" data-sw="Chumba cha Bustani">Garden Room</h3>
+          <div class="pricing-amount">
+            <span class="currency">KES</span>
+            <span class="value">8,500</span>
+            <span class="period" data-en="/night" data-sw="/usiku">/night</span>
+          </div>
+          <p class="pricing-desc" data-en="Cozy room with garden views, perfect for couples or solo travelers." data-sw="Chumba cha starehe na maoni ya bustani, kizuri kwa wawili au msafiri mmoja.">Cozy room with garden views, perfect for couples or solo travelers.</p>
+          <div class="pricing-features">
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Queen-size bed" data-sw="Kitanda kikubwa">Queen-size bed</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Air conditioning" data-sw="Kiyoyozi">Air conditioning</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Free Wi-Fi" data-sw="Wi-Fi bure">Free Wi-Fi</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Breakfast included" data-sw="Kifungua kinywa kimejumuishwa">Breakfast included</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Pool access" data-sw="Kuingia bwawa">Pool access</span></div>
+          </div>
+          <a href="#booking" class="btn btn-primary" style="width:100%">
+            <span data-en="Book Garden Room" data-sw="Hifadhi Chumba">Book Garden Room</span>
+          </a>
+          <div class="mpesa-badge"><span>💚</span> M-Pesa</div>
+        </div>
+
+        <div class="pricing-card featured reveal delay-2">
+          <div class="pricing-badge" data-en="⭐ Most Popular" data-sw="⭐ Maarufu Zaidi">⭐ Most Popular</div>
+          <h3 data-en="Ocean Suite" data-sw="Chumba cha Bahari">Ocean Suite</h3>
+          <div class="pricing-amount">
+            <span class="currency">KES</span>
+            <span class="value">15,000</span>
+            <span class="period" data-en="/night" data-sw="/usiku">/night</span>
+          </div>
+          <p class="pricing-desc" data-en="Premium suite with panoramic ocean views and private balcony." data-sw="Chumba cha kifahari na maoni ya bahari na balcony binafsi.">Premium suite with panoramic ocean views and private balcony.</p>
+          <div class="pricing-features">
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="King-size bed" data-sw="Kitanda cha mfalme">King-size bed</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Ocean-view balcony" data-sw="Balcony ya bahari">Ocean-view balcony</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Mini-bar & lounge" data-sw="Mini-bar na lounge">Mini-bar & lounge</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Full board meals" data-sw="Milo kamili">Full board meals</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Spa credit KES 2,000" data-sw="Mkopo wa Spa KES 2,000">Spa credit KES 2,000</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Airport transfer" data-sw="Usafiri wa uwanja wa ndege">Airport transfer</span></div>
+          </div>
+          <a href="#booking" class="btn btn-gold" style="width:100%">
+            <span data-en="Book Ocean Suite" data-sw="Hifadhi Chumba cha Bahari">Book Ocean Suite</span>
+          </a>
+          <div class="mpesa-badge"><span>💚</span> M-Pesa</div>
+        </div>
+
+        <div class="pricing-card reveal delay-3">
+          <h3 data-en="Family Villa" data-sw="Villa ya Familia">Family Villa</h3>
+          <div class="pricing-amount">
+            <span class="currency">KES</span>
+            <span class="value">25,000</span>
+            <span class="period" data-en="/night" data-sw="/usiku">/night</span>
+          </div>
+          <p class="pricing-desc" data-en="Spacious 2-bedroom villa with private pool and dedicated staff." data-sw="Villa kubwa ya vyumba 2 na bwawa binafsi na wafanyakazi maalum.">Spacious 2-bedroom villa with private pool and dedicated staff.</p>
+          <div class="pricing-features">
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="2 bedrooms" data-sw="Vyumba 2">2 bedrooms</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Private plunge pool" data-sw="Bwawa binafsi">Private plunge pool</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Full kitchen" data-sw="Jikoni kamili">Full kitchen</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="All-inclusive package" data-sw="Kifurushi kamili">All-inclusive package</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Dedicated concierge" data-sw="Msaidizi maalum">Dedicated concierge</span></div>
+            <div class="pricing-feature"><span class="check">✓</span> <span data-en="Free dhow cruise" data-sw="Safari ya jahazi bure">Free dhow cruise</span></div>
+          </div>
+          <a href="#booking" class="btn btn-primary" style="width:100%">
+            <span data-en="Book Family Villa" data-sw="Hifadhi Villa">Book Family Villa</span>
+          </a>
+          <div class="mpesa-badge"><span>💚</span> M-Pesa</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REVIEWS SECTION ==================== -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i data-lucide="star" style="width:14px;height:14px"></i>
+          <span data-en="Guest Reviews" data-sw="Maoni ya Wageni">Guest Reviews</span>
+        </div>
+        <h2 class="section-title" data-en="What Our Guests <span class='highlight'>Say</span>" data-sw="Wageni Wetu <span class='highlight'>Wanasema</span> Nini">What Our Guests <span class="highlight">Say</span></h2>
+        <p class="section-subtitle" data-en="Real reviews from real guests — verified on Google and TripAdvisor." data-sw="Maoni halisi kutoka wageni halisi — yamethibitishwa kwenye Google na TripAdvisor.">Real reviews from real guests — verified on Google and TripAdvisor.</p>
+      </div>
+
+      <div class="reviews-carousel-wrapper reveal">
+        <div class="reviews-carousel" id="reviewsCarousel">
+          <div class="review-card">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text" data-en="\"Absolutely stunning resort! The Swahili food was the highlight of our trip. The ocean-view suite was worth every shilling. Booking directly saved us so much compared to Booking.com!\"" data-sw="\"Resoti nzuri sana! Chakula cha Kiswahili kilikuwa kilele cha safari yetu. Chumba cha bahari kilistahili kila shilingi. Kuweka nafasi moja kwa moja kulitusaidia sana!\"">"Absolutely stunning resort! The Swahili food was the highlight of our trip. The ocean-view suite was worth every shilling. Booking directly saved us so much compared to Booking.com!"</p>
+            <div class="review-author">
+              <div class="review-avatar">SK</div>
+              <div class="review-author-info">
+                <h4>Sarah Kariuki</h4>
+                <span>Nairobi, Kenya</span>
+                <div class="review-source">📍 Google Review</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text" data-en="\"We came for a weekend getaway and didn't want to leave! The dhow cruise at sunset was magical. Staff were incredibly warm and welcoming. Will definitely return.\"" data-sw="\"Tulikuja kwa wikendi na hatukutaka kuondoka! Safari ya jahazi wakati wa machweo ilikuwa ya kichawi. Wafanyakazi walikuwa wa joto sana. Tutarudi tena.\"">"We came for a weekend getaway and didn't want to leave! The dhow cruise at sunset was magical. Staff were incredibly warm and welcoming. Will definitely return."</p>
+            <div class="review-author">
+              <div class="review-avatar">JM</div>
+              <div class="review-author-info">
+                <h4>James & Maria</h4>
+                <span>London, UK</span>
+                <div class="review-source">📍 TripAdvisor</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text" data-en="\"The M-Pesa payment was so convenient — no hassle at all. The spa was incredible and the biryani at the restaurant is the best I've had outside of Old Town. Highly recommend!\"" data-sw="\"Kulipa kwa M-Pesa kulikuwa rahisi sana — hakuna shida yoyote. Spa ilikuwa nzuri na biriani ya mkahawa ni bora kuliko yoyote nje ya Old Town. Ninapendekeza sana!\"">"The M-Pesa payment was so convenient — no hassle at all. The spa was incredible and the biryani at the restaurant is the best I've had outside of Old Town. Highly recommend!"</p>
+            <div class="review-author">
+              <div class="review-avatar">AO</div>
+              <div class="review-author-info">
+                <h4>Amina Omar</h4>
+                <span>Mombasa, Kenya</span>
+                <div class="review-source">📍 Google Review</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text" data-en="\"Brought my family of 5 and the villa was perfection. Private pool, amazing food, and the kids loved the snorkeling trips. Best family holiday we've ever had in Kenya.\"" data-sw="\"Nilileta familia yangu ya watu 5 na villa ilikuwa kamili. Bwawa binafsi, chakula kizuri, na watoto walipenda kupiga mbizi. Likizo bora tumewahi kupata Kenya.\"">"Brought my family of 5 and the villa was perfection. Private pool, amazing food, and the kids loved the snorkeling trips. Best family holiday we've ever had in Kenya."</p>
+            <div class="review-author">
+              <div class="review-avatar">DW</div>
+              <div class="review-author-info">
+                <h4>David Wanjiru</h4>
+                <span>Nakuru, Kenya</span>
+                <div class="review-source">📍 Google Review</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text" data-en="\"I reached out on WhatsApp and got a response in 2 minutes! The booking process was seamless. No more dealing with travel agents. This is how every hotel should operate.\"" data-sw="\"Niliwasiliana kupitia WhatsApp na kupata jibu dakika 2! Mchakato wa kuweka nafasi ulikuwa mzuri. Hakuna tena kuhangaika na mawakala wa kusafiri.\"">"I reached out on WhatsApp and got a response in 2 minutes! The booking process was seamless. No more dealing with travel agents. This is how every hotel should operate."</p>
+            <div class="review-author">
+              <div class="review-avatar">PT</div>
+              <div class="review-author-info">
+                <h4>Peter Tanui</h4>
+                <span>Eldoret, Kenya</span>
+                <div class="review-source">📍 TripAdvisor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-nav">
+        <button onclick="scrollReviews(-1)" aria-label="Previous reviews"><i data-lucide="chevron-left" style="width:18px;height:18px"></i></button>
+        <button onclick="scrollReviews(1)" aria-label="Next reviews"><i data-lucide="chevron-right" style="width:18px;height:18px"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOCATION SECTION ==================== -->
+  <section class="location" id="location">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">
+          <i data-lucide="map-pin" style="width:14px;height:14px"></i>
+          <span data-en="Find Us" data-sw="Tupate">Find Us</span>
+        </div>
+        <h2 class="section-title" data-en="Visit <span class='highlight'>Pwani Resort</span>" data-sw="Tembelea <span class='highlight'>Pwani Resort</span>">Visit <span class="highlight">Pwani Resort</span></h2>
+        <p class="section-subtitle" data-en="Located on the pristine Nyali Beach, just 15 minutes from Moi International Airport." data-sw="Iko kwenye Pwani ya Nyali, dakika 15 tu kutoka Uwanja wa Ndege wa Kimataifa wa Moi.">Located on the pristine Nyali Beach, just 15 minutes from Moi International Airport.</p>
+      </div>
+
+      <div class="location-wrapper">
+        <div class="location-map reveal-left">
+          <div id="map"></div>
+        </div>
+
+        <div class="location-details reveal-right">
+          <div class="location-card">
+            <div class="location-card-icon">📍</div>
+            <div>
+              <h4 data-en="Address" data-sw="Anwani">Address</h4>
+              <p>Nyali Beach Road, Mombasa, Kenya<br>P.O. Box 12345-80100</p>
+            </div>
+          </div>
+
+          <div class="location-card">
+            <div class="location-card-icon">📞</div>
+            <div>
+              <h4 data-en="Call Us" data-sw="Tupigie">Call Us</h4>
+              <p>+254 700 123 456<br>+254 41 222 3456</p>
+            </div>
+          </div>
+
+          <div class="location-card">
+            <div class="location-card-icon">🕐</div>
+            <div>
+              <h4 data-en="Operating Hours" data-sw="Saa za Kufanya Kazi">Operating Hours</h4>
+              <p data-en="Reception: 24/7<br>Restaurant: 7AM — 11PM<br>Spa: 9AM — 8PM" data-sw="Mapokezi: 24/7<br>Mkahawa: 7AM — 11PM<br>Spa: 9AM — 8PM">Reception: 24/7<br>Restaurant: 7AM — 11PM<br>Spa: 9AM — 8PM</p>
+            </div>
+          </div>
+
+          <div class="location-card">
+            <div class="location-card-icon">✈️</div>
+            <div>
+              <h4 data-en="Getting Here" data-sw="Jinsi ya Kufika">Getting Here</h4>
+              <p data-en="15 min from Moi Airport (MIA)<br>5 min from Nyali Bridge<br>Free airport pickup available" data-sw="Dakika 15 kutoka Uwanja wa Moi<br>Dakika 5 kutoka Daraja la Nyali<br>Usafiri wa bure wa uwanja wa ndege">15 min from Moi Airport (MIA)<br>5 min from Nyali Bridge<br>Free airport pickup available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="nav-logo-icon">🌊</div>
+            <span>Pwani Resort</span>
+          </div>
+          <p data-en="Luxury beachfront resort & restaurant on the shores of Mombasa, Kenya. Experience authentic Swahili hospitality." data-sw="Resoti ya kifahari na mkahawa kando ya bahari Mombasa, Kenya. Pata ukarimu halisi wa Kiswahili.">Luxury beachfront resort & restaurant on the shores of Mombasa, Kenya. Experience authentic Swahili hospitality.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link" aria-label="Facebook"><i data-lucide="facebook" style="width:18px;height:18px"></i></a>
+            <a href="#" class="footer-social-link" aria-label="Instagram"><i data-lucide="instagram" style="width:18px;height:18px"></i></a>
+            <a href="#" class="footer-social-link" aria-label="Twitter"><i data-lucide="twitter" style="width:18px;height:18px"></i></a>
+            <a href="#" class="footer-social-link" aria-label="YouTube"><i data-lucide="youtube" style="width:18px;height:18px"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Quick Links" data-sw="Viungo vya Haraka">Quick Links</h4>
+          <ul>
+            <li><a href="#services" data-en="Services" data-sw="Huduma">Services</a></li>
+            <li><a href="#gallery" data-en="Gallery" data-sw="Picha">Gallery</a></li>
+            <li><a href="#booking" data-en="Book Now" data-sw="Weka Nafasi">Book Now</a></li>
+            <li><a href="#pricing" data-en="Pricing" data-sw="Bei">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Services" data-sw="Huduma">Services</h4>
+          <ul>
+            <li><a href="#" data-en="Accommodation" data-sw="Malazi">Accommodation</a></li>
+            <li><a href="#" data-en="Restaurant" data-sw="Mkahawa">Restaurant</a></li>
+            <li><a href="#" data-en="Ocean Tours" data-sw="Safari za Bahari">Ocean Tours</a></li>
+            <li><a href="#" data-en="Spa & Wellness" data-sw="Spa na Ustawi">Spa & Wellness</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Contact" data-sw="Mawasiliano">Contact</h4>
+          <ul>
+            <li><a href="tel:+254700123456">+254 700 123 456</a></li>
+            <li><a href="mailto:hello@pwaniresort.co.ke">hello@pwaniresort.co.ke</a></li>
+            <li><a href="https://wa.me/254700123456" data-en="WhatsApp Chat" data-sw="Mazungumzo ya WhatsApp">WhatsApp Chat</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Pwani Beach Resort. All rights reserved.</span>
+        <div class="footer-payments">
+          <span class="footer-payment-method">💚 M-Pesa</span>
+          <span class="footer-payment-method">💳 Visa</span>
+          <span class="footer-payment-method">💳 Mastercard</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== WHATSAPP FLOATING BUTTON ==================== -->
+  <div class="whatsapp-float" id="whatsappFloat">
+    <div class="whatsapp-tooltip" data-en="💬 Chat with us on WhatsApp" data-sw="💬 Zungumza nasi WhatsApp">💬 Chat with us on WhatsApp</div>
+    <a href="https://wa.me/254700123456?text=Hello%20Pwani%20Resort!%20I'd%20like%20to%20enquire%20about..." 
+       target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <!-- ==================== AI CHATBOT WIDGET ==================== -->
+  <div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-window">
+      <div class="chatbot-header">
+        <div class="chatbot-header-avatar">🤖</div>
+        <div class="chatbot-header-info">
+          <h4>Pwani Assistant</h4>
+          <span><span class="online-dot"></span> <span data-en="Online now" data-sw="Mtandaoni sasa">Online now</span></span>
+        </div>
+      </div>
+
+      <div class="chatbot-messages" id="chatMessages">
+        <div class="chat-message bot" data-en="Jambo! 👋 Welcome to Pwani Beach Resort. I'm your virtual assistant. How can I help you today?" data-sw="Jambo! 👋 Karibu Pwani Beach Resort. Mimi ni msaidizi wako wa mtandaoni. Nawezaje kukusaidia leo?">
+          Jambo! 👋 Welcome to Pwani Beach Resort. I'm your virtual assistant. How can I help you today?
+        </div>
+      </div>
+
+      <div class="chatbot-quick-replies" id="quickReplies">
+        <button class="quick-reply" onclick="sendQuickReply(this)" data-en="Room prices?" data-sw="Bei za vyumba?">Room prices?</button>
+        <button class="quick-reply" onclick="sendQuickReply(this)" data-en="Book a room" data-sw="Weka nafasi">Book a room</button>
+        <button class="quick-reply" onclick="sendQuickReply(this)" data-en="Restaurant menu" data-sw="Menyu ya mkahawa">Restaurant menu</button>
+        <button class="quick-reply" onclick="sendQuickReply(this)" data-en="How to get there?" data-sw="Jinsi ya kufika?">How to get there?</button>
+        <button class="quick-reply" onclick="sendQuickReply(this)" data-en="Talk to human" data-sw="Ongea na mtu">Talk to human</button>
+      </div>
+
+      <div class="chatbot-input">
+        <input type="text" id="chatInput" placeholder="Type your message..." data-en-placeholder="Type your message..." data-sw-placeholder="Andika ujumbe wako...">
+        <button onclick="sendChatMessage()" aria-label="Send message">
+          <i data-lucide="send" style="width:18px;height:18px"></i>
+        </button>
+      </div>
+    </div>
+
+    <button class="chatbot-toggle" onclick="toggleChatbot()" aria-label="Open AI Assistant">
+      <i data-lucide="message-circle" style="width:24px;height:24px" class="chat-icon"></i>
+      <i data-lucide="x" style="width:24px;height:24px" class="close-icon"></i>
+    </button>
+  </div>
+
+  <!-- ==================== BOOKING CONFIRMATION MODAL ==================== -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal">
+      <div class="modal-icon">✅</div>
+      <h2 data-en="Booking Confirmed!" data-sw="Nafasi Imethibitishwa!">Booking Confirmed!</h2>
+      <p data-en="Your reservation has been received. You'll get a confirmation on WhatsApp shortly." data-sw="Hifadhi yako imepokelewa. Utapata uthibitisho kupitia WhatsApp hivi karibuni.">Your reservation has been received. You'll get a confirmation on WhatsApp shortly.</p>
+      <div class="modal-details" id="modalDetails"></div>
+      <button class="btn btn-primary" style="width:100%" onclick="closeModal()" data-en="Done" data-sw="Tayari">Done</button>
+      <div class="mpesa-badge" style="margin-top:16px;justify-content:center;width:100%;display:flex">
+        <span>💚</span>
+        <span data-en="M-Pesa payment link sent to your phone" data-sw="Kiungo cha malipo ya M-Pesa kimetumwa kwa simu yako">M-Pesa payment link sent to your phone</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div class="toast" id="toast">
+    <div class="toast-icon success">✓</div>
+    <div class="toast-content">
+      <h4 id="toastTitle"></h4>
+      <p id="toastMessage"></p>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
